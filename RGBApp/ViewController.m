@@ -28,23 +28,20 @@
   switch (sender.tag) {
     case 0:
       self.redHexValue.text = [NSString stringWithFormat:@"%2lX",(NSUInteger)sender.value];
-      [self.colorValues replaceObjectAtIndex:0 withObject:[NSNumber numberWithFloat:sender.value / 255.0f]];
       break;
     case 1:
       self.greenHexValue.text = [NSString stringWithFormat:@"%2lX",(NSUInteger)sender.value];
-      [self.colorValues replaceObjectAtIndex:1 withObject:[NSNumber numberWithFloat:sender.value / 255.0f]];
       break;
     case 2:
       self.blueHexValue.text = [NSString stringWithFormat:@"%2lX",(NSUInteger)sender.value];
-      [self.colorValues replaceObjectAtIndex:2 withObject:[NSNumber numberWithFloat:sender.value / 255.0f]];
       break;
     case 3:
-      self.alphaHexValue.text = [NSString stringWithFormat:@"%2lX",(NSUInteger)sender.value];
-      [self.colorValues replaceObjectAtIndex:3 withObject:[NSNumber numberWithFloat:sender.value / 255.0f]];
+      self.alphaHexValue.text = [NSString stringWithFormat:@"%1.2f",sender.value/255.0f];
       break;
     default:
       break;
   }
+  [self.colorValues replaceObjectAtIndex:sender.tag withObject:[NSNumber numberWithFloat:sender.value / 255.0f]];
   self.colorDisplay.backgroundColor = [UIColor colorWithRed:[self.colorValues[0] floatValue] green:[self.colorValues[1] floatValue] blue:[self.colorValues[2] floatValue] alpha:[self.colorValues[3] floatValue]];
   
 }
